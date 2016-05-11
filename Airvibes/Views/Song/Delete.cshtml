@@ -1,0 +1,88 @@
+﻿@model Airvibes.Models.Songs
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Songs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Record)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Record)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimesPlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimesPlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LowQFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LowQFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HiQFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HiQFile)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

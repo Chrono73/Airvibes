@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AVdataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Photo" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Covers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_User" Type="int" Nullable="false" />
+          <Property Name="Id_Record" Type="int" Nullable="false" />
+          <Property Name="Body" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PostedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Artist" Type="int" Nullable="false" />
+          <Property Name="Id_Cover" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ReleaseDate" Type="date" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="15" />
+          <Property Name="Rating" Type="float" />
+        </EntityType>
+        <EntityType Name="SComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_User" Type="int" Nullable="false" />
+          <Property Name="Id_Song" Type="int" Nullable="false" />
+          <Property Name="Body" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PostedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Songs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_Artist" Type="int" Nullable="false" />
+          <Property Name="Id_Record" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="TimesPlayed" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="LowQFile" Type="varbinary(max)" />
+          <Property Name="HiQFile" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Artists_Photos">
+          <End Role="Photos" Type="Self.Photos" Multiplicity="0..1" />
+          <End Role="Artists" Type="Self.Artists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artists">
+              <PropertyRef Name="Id_Photo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RComment_Records">
+          <End Role="Records" Type="Self.Records" Multiplicity="1" />
+          <End Role="RComment" Type="Self.RComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RComment">
+              <PropertyRef Name="Id_Record" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RComment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="RComment" Type="Self.RComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RComment">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Artists">
+          <End Role="Artists" Type="Self.Artists" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="Id_Artist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Covers">
+          <End Role="Covers" Type="Self.Covers" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Covers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="Id_Cover" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SComment_Songs">
+          <End Role="Songs" Type="Self.Songs" Multiplicity="1" />
+          <End Role="SComment" Type="Self.SComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Songs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SComment">
+              <PropertyRef Name="Id_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SComment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SComment" Type="Self.SComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SComment">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Songs_Artists">
+          <End Role="Artists" Type="Self.Artists" Multiplicity="1" />
+          <End Role="Songs" Type="Self.Songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Songs">
+              <PropertyRef Name="Id_Artist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Songs_Records">
+          <End Role="Records" Type="Self.Records" Multiplicity="1" />
+          <End Role="Songs" Type="Self.Songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Songs">
+              <PropertyRef Name="Id_Record" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AVdataModelStoreContainer">
+          <EntitySet Name="Artists" EntityType="Self.Artists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Covers" EntityType="Self.Covers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RComment" EntityType="Self.RComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SComment" EntityType="Self.SComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Songs" EntityType="Self.Songs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Artists_Photos" Association="Self.FK_Artists_Photos">
+            <End Role="Photos" EntitySet="Photos" />
+            <End Role="Artists" EntitySet="Artists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RComment_Records" Association="Self.FK_RComment_Records">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="RComment" EntitySet="RComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RComment_Users" Association="Self.FK_RComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RComment" EntitySet="RComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Artists" Association="Self.FK_Records_Artists">
+            <End Role="Artists" EntitySet="Artists" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Covers" Association="Self.FK_Records_Covers">
+            <End Role="Covers" EntitySet="Covers" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SComment_Songs" Association="Self.FK_SComment_Songs">
+            <End Role="Songs" EntitySet="Songs" />
+            <End Role="SComment" EntitySet="SComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SComment_Users" Association="Self.FK_SComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SComment" EntitySet="SComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Songs_Artists" Association="Self.FK_Songs_Artists">
+            <End Role="Artists" EntitySet="Artists" />
+            <End Role="Songs" EntitySet="Songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Songs_Records" Association="Self.FK_Songs_Records">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="Songs" EntitySet="Songs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AVdataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Photo" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Photos" Relationship="Self.FK_Artists_Photos" FromRole="Artists" ToRole="Photos" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Artists" FromRole="Artists" ToRole="Records" />
+          <NavigationProperty Name="Songs" Relationship="Self.FK_Songs_Artists" FromRole="Artists" ToRole="Songs" />
+        </EntityType>
+        <EntityType Name="Covers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Records_Covers" FromRole="Covers" ToRole="Records" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Artists" Relationship="Self.FK_Artists_Photos" FromRole="Photos" ToRole="Artists" />
+        </EntityType>
+        <EntityType Name="RComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_User" Type="Int32" Nullable="false" />
+          <Property Name="Id_Record" Type="Int32" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_RComment_Records" FromRole="RComment" ToRole="Records" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_RComment_Users" FromRole="RComment" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Artist" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cover" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="Genre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" />
+          <NavigationProperty Name="Artists" Relationship="Self.FK_Records_Artists" FromRole="Records" ToRole="Artists" />
+          <NavigationProperty Name="Covers" Relationship="Self.FK_Records_Covers" FromRole="Records" ToRole="Covers" />
+          <NavigationProperty Name="RComment" Relationship="Self.FK_RComment_Records" FromRole="Records" ToRole="RComment" />
+          <NavigationProperty Name="Songs" Relationship="Self.FK_Songs_Records" FromRole="Records" ToRole="Songs" />
+        </EntityType>
+        <EntityType Name="SComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_User" Type="Int32" Nullable="false" />
+          <Property Name="Id_Song" Type="Int32" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_SComment_Users" FromRole="SComment" ToRole="Users" />
+          <NavigationProperty Name="Songs" Relationship="AVdataModel.FK_SComment_Songs1" FromRole="SComment" ToRole="Songs" />
+        </EntityType>
+        <EntityType Name="Songs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Artist" Type="Int32" Nullable="false" />
+          <Property Name="Id_Record" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="TimesPlayed" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="LowQFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HiQFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Artists" Relationship="Self.FK_Songs_Artists" FromRole="Songs" ToRole="Artists" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_Songs_Records" FromRole="Songs" ToRole="Records" />
+          <NavigationProperty Name="SComment" Relationship="AVdataModel.FK_SComment_Songs1" FromRole="Songs" ToRole="SComment" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RComment" Relationship="Self.FK_RComment_Users" FromRole="Users" ToRole="RComment" />
+          <NavigationProperty Name="SComment" Relationship="Self.FK_SComment_Users" FromRole="Users" ToRole="SComment" />
+        </EntityType>
+        <Association Name="FK_Artists_Photos">
+          <End Role="Photos" Type="Self.Photos" Multiplicity="0..1" />
+          <End Role="Artists" Type="Self.Artists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artists">
+              <PropertyRef Name="Id_Photo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Artists">
+          <End Role="Artists" Type="Self.Artists" Multiplicity="1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="Id_Artist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Songs_Artists">
+          <End Role="Artists" Type="Self.Artists" Multiplicity="1" />
+          <End Role="Songs" Type="Self.Songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Songs">
+              <PropertyRef Name="Id_Artist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Records_Covers">
+          <End Role="Covers" Type="Self.Covers" Multiplicity="0..1" />
+          <End Role="Records" Type="Self.Records" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Covers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Records">
+              <PropertyRef Name="Id_Cover" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RComment_Records">
+          <End Role="Records" Type="Self.Records" Multiplicity="1" />
+          <End Role="RComment" Type="Self.RComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RComment">
+              <PropertyRef Name="Id_Record" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RComment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="RComment" Type="Self.RComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RComment">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Songs_Records">
+          <End Role="Records" Type="Self.Records" Multiplicity="1" />
+          <End Role="Songs" Type="Self.Songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Records">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Songs">
+              <PropertyRef Name="Id_Record" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SComment_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SComment" Type="Self.SComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SComment">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AVdataEntitiesSettings" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artists" EntityType="Self.Artists" />
+          <EntitySet Name="Covers" EntityType="Self.Covers" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" />
+          <EntitySet Name="RComment" EntityType="Self.RComment" />
+          <EntitySet Name="Records" EntityType="Self.Records" />
+          <EntitySet Name="SComment" EntityType="Self.SComment" />
+          <EntitySet Name="Songs" EntityType="Self.Songs" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Artists_Photos" Association="Self.FK_Artists_Photos">
+            <End Role="Photos" EntitySet="Photos" />
+            <End Role="Artists" EntitySet="Artists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Artists" Association="Self.FK_Records_Artists">
+            <End Role="Artists" EntitySet="Artists" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Songs_Artists" Association="Self.FK_Songs_Artists">
+            <End Role="Artists" EntitySet="Artists" />
+            <End Role="Songs" EntitySet="Songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Records_Covers" Association="Self.FK_Records_Covers">
+            <End Role="Covers" EntitySet="Covers" />
+            <End Role="Records" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RComment_Records" Association="Self.FK_RComment_Records">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="RComment" EntitySet="RComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RComment_Users" Association="Self.FK_RComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RComment" EntitySet="RComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Songs_Records" Association="Self.FK_Songs_Records">
+            <End Role="Records" EntitySet="Records" />
+            <End Role="Songs" EntitySet="Songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SComment_Users" Association="Self.FK_SComment_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SComment" EntitySet="SComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SComment_Songs1" Association="AVdataModel.FK_SComment_Songs1">
+            <End Role="Songs" EntitySet="Songs" />
+            <End Role="SComment" EntitySet="SComment" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_SComment_Songs1">
+          <End Type="AVdataModel.Songs" Role="Songs" Multiplicity="1" />
+          <End Type="AVdataModel.SComment" Role="SComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Songs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SComment">
+              <PropertyRef Name="Id_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AVdataModelStoreContainer" CdmEntityContainer="AVdataEntitiesSettings">
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="AVdataModel.Artists">
+              <MappingFragment StoreEntitySet="Artists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Photo" ColumnName="Id_Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Covers">
+            <EntityTypeMapping TypeName="AVdataModel.Covers">
+              <MappingFragment StoreEntitySet="Covers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="AVdataModel.Photos">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RComment">
+            <EntityTypeMapping TypeName="AVdataModel.RComment">
+              <MappingFragment StoreEntitySet="RComment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Id_Record" ColumnName="Id_Record" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="PostedAt" ColumnName="PostedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="AVdataModel.Records">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Artist" ColumnName="Id_Artist" />
+                <ScalarProperty Name="Id_Cover" ColumnName="Id_Cover" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SComment">
+            <EntityTypeMapping TypeName="AVdataModel.SComment">
+              <MappingFragment StoreEntitySet="SComment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Id_Song" ColumnName="Id_Song" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="PostedAt" ColumnName="PostedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Songs">
+            <EntityTypeMapping TypeName="AVdataModel.Songs">
+              <MappingFragment StoreEntitySet="Songs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Artist" ColumnName="Id_Artist" />
+                <ScalarProperty Name="Id_Record" ColumnName="Id_Record" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="TimesPlayed" ColumnName="TimesPlayed" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="LowQFile" ColumnName="LowQFile" />
+                <ScalarProperty Name="HiQFile" ColumnName="HiQFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AVdataModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

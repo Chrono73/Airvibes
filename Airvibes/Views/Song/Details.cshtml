@@ -1,0 +1,82 @@
+﻿@model Airvibes.Models.Songs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Songs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Record)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Record)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimesPlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimesPlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LowQFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LowQFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HiQFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HiQFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
