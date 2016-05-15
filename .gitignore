@@ -4,6 +4,10 @@ Airvibes\App_Data\
 Airvibes\bin\
 Airvibes\obj\Debug\
 .vs\Airvibes\v14
+Airvibes/App_Data/
+Airvibes/bin/
+Airvibes/obj/Debug/
+.vs/Airvibes/v14
 
 ############### VS generated .gitignore
 ## Ignore Visual Studio temporary files, build results, and
