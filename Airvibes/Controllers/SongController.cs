@@ -10,6 +10,7 @@ using Airvibes.Models;
 
 namespace Airvibes.Controllers
 {
+    [RequireHttps]
     public class SongController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -8,7 +8,7 @@ namespace Airvibes.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index2()
+        public ActionResult Index()
         {
             return View();
         }

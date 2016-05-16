@@ -326,3 +326,17 @@ C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\Microsoft.Owin.Security.
 C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\obj\Debug\Airvibes.csprojResolveAssemblyReference.cache
 C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\obj\Debug\Airvibes.dll
 C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\obj\Debug\Airvibes.pdb
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\csc.exe.config
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\csc.rsp
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\csi.exe
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\csi.rsp
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\System.AppContext.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\vbc.exe.config
+C:\Users\Antoine\Documents\GitHub\Airvibes\Airvibes\bin\roslyn\vbc.rsp
