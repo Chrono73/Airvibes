@@ -54,15 +54,15 @@ namespace Airvibes
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "138659796537628",
+               appSecret: "e82c2da807fa9d422546ec8fcf6fa78c");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "5204896442-d7jcij2vna46l7v2j0bp1aeb48m2gae6.apps.googleusercontent.com",
+                ClientSecret = "IHfScGSOYByN0deokQkCiF5_"
+            });
         }
     }
 }

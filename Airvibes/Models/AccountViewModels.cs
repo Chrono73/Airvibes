@@ -8,6 +8,9 @@ namespace Airvibes.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        public string Nom { get; set; }
+        public string Prénom { get; set; }
+        public System.DateTime? DateNaissance { get; set; }
     }
 
     public class ExternalLoginListViewModel
