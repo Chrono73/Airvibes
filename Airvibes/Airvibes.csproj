@@ -268,6 +268,50 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Media\AudioFiles\001.mp3" />
+    <Content Include="Media\AudioFiles\002.mp3" />
+    <Content Include="Media\AudioFiles\003.mp3" />
+    <Content Include="Media\AudioFiles\004.mp3" />
+    <Content Include="Media\AudioFiles\005.mp3" />
+    <Content Include="Media\AudioFiles\006.mp3" />
+    <Content Include="Media\AudioFiles\007.mp3" />
+    <Content Include="Media\AudioFiles\008.mp3" />
+    <Content Include="Media\AudioFiles\009.mp3" />
+    <Content Include="Media\AudioFiles\010.mp3" />
+    <Content Include="Media\AudioFiles\011.mp3" />
+    <Content Include="Media\AudioFiles\012.mp3" />
+    <Content Include="Media\AudioFiles\013.mp3" />
+    <Content Include="Media\AudioFiles\014.mp3" />
+    <Content Include="Media\AudioFiles\015.mp3" />
+    <Content Include="Media\AudioFiles\016.mp3" />
+    <Content Include="Media\AudioFiles\017.mp3" />
+    <Content Include="Media\AudioFiles\018.mp3" />
+    <Content Include="Media\AudioFiles\019.mp3" />
+    <Content Include="Media\AudioFiles\020.mp3" />
+    <Content Include="Media\AudioFiles\021.mp3" />
+    <Content Include="Media\AudioFiles\022.mp3" />
+    <Content Include="Media\AudioFiles\023.mp3" />
+    <Content Include="Media\AudioFiles\024.mp3" />
+    <Content Include="Media\AudioFiles\025.mp3" />
+    <Content Include="Media\AudioFiles\026.mp3" />
+    <Content Include="Media\AudioFiles\027.mp3" />
+    <Content Include="Media\AudioFiles\028.mp3" />
+    <Content Include="Media\AudioFiles\029.mp3" />
+    <Content Include="Media\AudioFiles\030.mp3" />
+    <Content Include="Media\AudioFiles\031.mp3" />
+    <Content Include="Media\AudioFiles\032.mp3" />
+    <Content Include="Media\AudioFiles\033.mp3" />
+    <Content Include="Media\AudioFiles\034.mp3" />
+    <Content Include="Media\AudioFiles\035.mp3" />
+    <Content Include="Media\AudioFiles\036.mp3" />
+    <Content Include="Media\AudioFiles\037.mp3" />
+    <Content Include="Media\AudioFiles\038.mp3" />
+    <Content Include="Media\AudioFiles\039.mp3" />
+    <Content Include="Media\AudioFiles\040.mp3" />
+    <Content Include="Media\AudioFiles\041.mp3" />
+    <Content Include="Media\Covers\1.jpg" />
+    <Content Include="Media\Covers\2.jpg" />
+    <Content Include="Media\Covers\3.jpg" />
     <Content Include="Models\AVdata.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AVdata.edmx</DependentUpon>
@@ -387,7 +431,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52730</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
