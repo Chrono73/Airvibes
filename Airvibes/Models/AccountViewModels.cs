@@ -68,6 +68,15 @@ namespace Airvibes.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nom")]
+        public string Nom { get; set; }
+        [Required]
+        [Display(Name = "Prénom")]
+        public string Prénom { get; set; }
+        [Required]
+        [Display(Name = "Date de naissance")]
+        public System.DateTime? DateNaissance { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
