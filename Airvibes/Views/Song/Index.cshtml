@@ -12,11 +12,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Artist)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Id_Record)
+            @Html.DisplayNameFor(model => model.Duration)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimesPlayed)
+        </th>
+        @*
+        <th>
+            @Html.DisplayNameFor(model => model.Filepath)
+        </th>
+        *@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -26,44 +39,12 @@
         <th>
             @Html.DisplayNameFor(model => model.TimesPlayed)
         </th>
+        @*
         <th>
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.Filepath)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LowQFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HiQFile)
-        </th>
+        *@
         <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Artist)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Record)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimesPlayed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LowQFile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HiQFile)
-        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

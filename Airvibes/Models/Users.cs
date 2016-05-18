@@ -17,16 +17,16 @@ namespace Airvibes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
-            this.RComment = new HashSet<RComment>();
-            this.SComment = new HashSet<SComment>();
+            this.RComments = new HashSet<RComments>();
+            this.SComments = new HashSet<SComments>();
         }
     
         public int Id { get; set; }
         public string Username { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RComment> RComment { get; set; }
+        public virtual ICollection<RComments> RComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SComment> SComment { get; set; }
+        public virtual ICollection<SComments> SComments { get; set; }
     }
 }

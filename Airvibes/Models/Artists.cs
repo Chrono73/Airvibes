@@ -22,11 +22,10 @@ namespace Airvibes.Models
         }
     
         public int Id { get; set; }
-        public Nullable<int> Id_Photo { get; set; }
+        public Nullable<int> Photo_Filepath { get; set; }
         public string Name { get; set; }
         public string Bio { get; set; }
     
-        public virtual Photos Photos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Records> Records { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

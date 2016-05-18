@@ -17,22 +17,20 @@ namespace Airvibes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Records()
         {
-            this.RComment = new HashSet<RComment>();
+            this.RComments = new HashSet<RComments>();
             this.Songs = new HashSet<Songs>();
         }
     
         public int Id { get; set; }
         public int Id_Artist { get; set; }
-        public Nullable<int> Id_Cover { get; set; }
+        public string Cover_Filepath { get; set; }
         public string Title { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
         public string Genre { get; set; }
-        public Nullable<double> Rating { get; set; }
     
         public virtual Artists Artists { get; set; }
-        public virtual Covers Covers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RComment> RComment { get; set; }
+        public virtual ICollection<RComments> RComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Songs> Songs { get; set; }
     }

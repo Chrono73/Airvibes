@@ -17,7 +17,7 @@ namespace Airvibes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Songs()
         {
-            this.SComment = new HashSet<SComment>();
+            this.SComments = new HashSet<SComments>();
         }
     
         public int Id { get; set; }
@@ -25,14 +25,12 @@ namespace Airvibes.Models
         public int Id_Record { get; set; }
         public string Title { get; set; }
         public int Duration { get; set; }
-        public int TimesPlayed { get; set; }
-        public Nullable<int> Rating { get; set; }
-        public byte[] LowQFile { get; set; }
-        public byte[] HiQFile { get; set; }
+        public Nullable<int> TimesPlayed { get; set; }
+        public string Filepath { get; set; }
     
         public virtual Artists Artists { get; set; }
         public virtual Records Records { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SComment> SComment { get; set; }
+        public virtual ICollection<SComments> SComments { get; set; }
     }
 }

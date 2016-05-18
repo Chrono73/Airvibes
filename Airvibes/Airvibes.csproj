@@ -212,7 +212,19 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Artists.cs">
-      <DependentUpon>AVdata.tt</DependentUpon>
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AVdata.Context.cs">
       <AutoGen>True</AutoGen>
@@ -229,8 +241,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AVdata.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AV_Data.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AV_Data.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AV_Data.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AV_Data.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AV_Data.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Covers.cs">
       <DependentUpon>AVdata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -240,17 +270,23 @@
     <Compile Include="Models\RComment.cs">
       <DependentUpon>AVdata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RComments.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Records.cs">
-      <DependentUpon>AVdata.tt</DependentUpon>
+      <DependentUpon>AV_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SComment.cs">
       <DependentUpon>AVdata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SComments.cs">
+      <DependentUpon>AV_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Songs.cs">
-      <DependentUpon>AVdata.tt</DependentUpon>
+      <DependentUpon>AV_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>AVdata.tt</DependentUpon>
+      <DependentUpon>AV_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -322,6 +358,16 @@
       <DependentUpon>AVdata.edmx</DependentUpon>
       <LastGenOutput>AVdata.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\AV_Data.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AV_Data.edmx</DependentUpon>
+      <LastGenOutput>AV_Data.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AV_Data.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AV_Data.edmx</DependentUpon>
+      <LastGenOutput>AV_Data.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -344,6 +390,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\AV_Data.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AV_Data.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AV_Data.edmx.diagram">
+      <DependentUpon>AV_Data.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
